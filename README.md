@@ -2,66 +2,43 @@
 
 SCC (**S**tyled **C**omponents in **C**SS) enables writing [Styled Components](https://github.com/styled-components/styled-components) in a CSS fashion.
 
-# why
+# A brief example
 
-Style Component is good, but for some cases I find it better to separate the UI from the logic.
+define you styles and html tags in `scc` file
 
-like for this example from styled component
-
-```js
-import React from 'react';
-
-import styled from 'styled-components';
-
-const Title = styled.h1`
+```
+Title {
+  component: h1;
   font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
-`;
+}
 
-const Wrapper = styled.section`
+Container {
+  component: section;
   padding: 4em;
   background: papayawhip;
-`;
-
-export default function Component() {
-    return <Wrapper>
-        <Title>Hello World, this is my first styled component!</Title>
-    </Wrapper>
+  font-size: (props.size === "large" ? "14px": "12px");
 }
 ```
 
-With SCC, you can write in this way,
+then import it , you can use it like styled component
 
-
-index.js
 ```js
-import React from 'react';
-import C from './index.scc';
+import React from "react";
+import S from "./index.scc";
 export default function Component() {
-    return <c.Wrapper>
-        <c.Title>
-            Hello World, this is my first styled component!
-        </c.Title>
-    </c.Wrapper>
+  return (
+    <S.Container>
+      <S.Title>Hello World, this is my first styled component!</c.Title>
+    </S.Container>
+  );
 }
 ```
 
-index.scc
-```css
-Title {
-    component: h1;
-    font-size: 1.5em;
-    text-align: center;
-}
+# interested?
 
-Wrapper {
-    component: section;
-    padding: 4em;
-    background: papayawhip;
-    font-size: (props.size === 'large' ? '14px': '12px')
-}
-```
+if you find it interesting, here are links:
 
-# how to use
-
+- [how it came](./history.md)
+- [how to use it](./to-start.md)
+- [spec](./spec.md)
